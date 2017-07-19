@@ -16,6 +16,8 @@ protocol CityDelegate: class {
 
 class CitySearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate {
 
+    private var pendingRequestWorkItem: DispatchWorkItem?
+    
     weak var delegate: CityDelegate? = nil
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -40,7 +42,12 @@ class CitySearchViewController: UIViewController, UITableViewDataSource, UITable
 
 // MARK: - UISearchResultsUpdating
     func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearchText(searchText: searchController.searchBar.text!)
+        pendingRequestWorkItem?.cancel()
+        let requestWorkItem = DispatchWorkItem { [weak self] in
+            self?.filterContentForSearchText(searchText: searchController.searchBar.text!)
+        }
+        pendingRequestWorkItem = requestWorkItem
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500) , execute: requestWorkItem)
     }
     
     func filterContentForSearchText(searchText: String, scope: String = "All") {

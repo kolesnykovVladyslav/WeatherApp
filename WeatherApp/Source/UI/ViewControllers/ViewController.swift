@@ -59,6 +59,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, CityDelegate 
         self.weatherForecastView.addGestureRecognizer(swipeDown)
     }
     
+    
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.down {
             self.showWeatherForecat(NSObject())
