@@ -10,8 +10,8 @@ import UIKit
 
 extension UIView {
     
-    func addBlurEffect(style: UIBlurEffectStyle) {
-        if !UIAccessibilityIsReduceTransparencyEnabled() {
+    func addBlurEffect(style: UIBlurEffect.Style) {
+        if !UIAccessibility.isReduceTransparencyEnabled {
             self.backgroundColor = UIColor.clear
             let blurEffect = UIBlurEffect(style: style)
             let blurEffectView = UIVisualEffectView(effect: blurEffect)

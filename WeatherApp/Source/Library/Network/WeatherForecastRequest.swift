@@ -28,10 +28,10 @@ class WeatherModelsParser: ResultParser {
                 return nil
         }
         
-        let res: [WeatherModel] = modelList.flatMap { modelDict in
+        let res: [WeatherModel] = modelList.compactMap { modelDict in
             return WeatherModel.init(result: modelDict)
         }
-        
+
         return res
     }
     

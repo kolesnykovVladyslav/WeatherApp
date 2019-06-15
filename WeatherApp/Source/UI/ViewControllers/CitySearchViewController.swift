@@ -35,10 +35,12 @@ class CitySearchViewController: UIViewController, UITableViewDataSource, UITable
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
-        searchController.searchBar.barTintColor = self.tableView.backgroundColor
-        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.barTintColor = .white
+        searchController.searchBar.tintColor = .white
+        searchController.searchBar.barStyle = .black
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
-    
 
 // MARK: - UISearchResultsUpdating
     func updateSearchResults(for searchController: UISearchController) {
@@ -51,7 +53,7 @@ class CitySearchViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func filterContentForSearchText(searchText: String, scope: String = "All") {
-        let queue = DispatchQueue.global(qos: .utility)
+        let queue = DispatchQueue.global(qos: .userInteractive)
         queue.async {
             self.filteredCites = self.citiesList.filter { city in
                 let string = (city as? [String: Any])?["name"] as? String

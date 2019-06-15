@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//  http://openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=b1b15e88fa797225412429c1c50c122a1
+import Reqres
 
 fileprivate struct APIStatusCode {
     static let success = 200
@@ -26,14 +26,22 @@ class APIRequest: ResultParser {
     private var request: URLRequest? {
         let path = urlPath
         let baseParameters = "?" + APIConstants.Keys.appID + "=" + APIConstants.apiKey + "&" + APIConstants.TemeperatureFormat.inCelsius
+        /*
         let string = bodyParameters?.map { (key, value) in
             return key + "=" + String(describing: value)
-            }
-            .reduce(baseParameters) { (string, parameter) -> String in
+            }.reduce(baseParameters) { (string, parameter) -> String in
                 return string + "&" + parameter
         } ?? baseParameters
+        */
         
-        return URL(string: path + string).map { URLRequest(url: $0) }
+        let string = bodyParameters?.map { (key, value) in
+            return key + "=" + String(describing: value)
+        }
+        let params = string?.reduce(baseParameters) { (string, parameter) -> String in
+                return string + "&" + parameter
+            } ?? baseParameters
+        
+        return URL(string: path + params).map { URLRequest(url: $0) }
     }
 
     //MARK: - Methods to overrice
@@ -89,4 +97,10 @@ class APIRequest: ResultParser {
         task?.cancel()
     }
 
+}
+
+extension URLSession {
+    static var reqres: URLSession {
+        return URLSession(configuration: Reqres.defaultSessionConfiguration())
+    }
 }

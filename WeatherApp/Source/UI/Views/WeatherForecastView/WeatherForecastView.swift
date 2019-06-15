@@ -68,7 +68,7 @@ class WeatherForecastView: BaseView, UITableViewDelegate, UITableViewDataSource,
 //MARK - UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return weatherModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

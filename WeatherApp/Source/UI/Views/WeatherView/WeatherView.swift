@@ -20,8 +20,8 @@ class WeatherView: BaseView {
     func fillWithModel(weatherModel: WeatherModel?) {
         temperatureLabel.text = (weatherModel?.temperature.map { String(Int($0)) } ?? "-") + "°"
         weatherLabel.text = weatherModel?.weatherDescription.map{ $0 } ?? "-"
-        windSpeedLabel.text = (weatherModel?.windSpeed.map{ String($0) } ?? "-") + " m/s"
-        rainValueLabel.text = (weatherModel?.rainVolume.map{ String($0) } ?? "-") + " %"
+        windSpeedLabel.text = (weatherModel?.windSpeed.map{ String(describing: $0) } ?? "-") + " m/s"
+        rainValueLabel.text = (weatherModel?.rainVolume.map{ String(describing: $0) } ?? "-") + " %"
         
         if let url = weatherModel?.imagePath.map({URL.init(string: $0)}) {
             weatherImage.kf.setImage(with: url)

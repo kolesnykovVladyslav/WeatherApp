@@ -59,9 +59,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, CityDelegate 
         self.weatherForecastView.addGestureRecognizer(swipeDown)
     }
     
-    
-    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
-        if gesture.direction == UISwipeGestureRecognizerDirection.down {
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizer.Direction.down {
             self.showWeatherForecat(NSObject())
         }
     }
@@ -136,8 +135,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, CityDelegate 
     
     func centerMapOnLocation(location: CLLocation) {
         let regionRadius: CLLocationDistance = 300000
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-                                                                  regionRadius * 2.0, regionRadius * 2.0)
+        let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate,
+                                                                  latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
     }
 }

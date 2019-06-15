@@ -27,7 +27,7 @@ class BaseView: UIView {
         
         view.frame = bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addBlurEffect(style: UIBlurEffectStyle.dark)
+        view.addBlurEffect(style: UIBlurEffect.Style.dark)
         self.initializeProperties()
         
         addSubview(view)

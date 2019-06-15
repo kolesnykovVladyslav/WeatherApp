@@ -239,11 +239,11 @@
 			isa = PBXGroup;
 			children = (
 				B713F9291F140FAE00AE1749 /* APIConstants.swift */,
+				B713F92B1F140FAE00AE1749 /* ResultParser.swift */,
+				B713F92A1F140FAE00AE1749 /* APIRequest.swift */,
 				B70D95681F1FA9BD00DF75A8 /* CoordinatesRequest.swift */,
 				B713F92C1F140FAE00AE1749 /* WeatherCoordinateRequest.swift */,
 				B70D95661F1FA9A700DF75A8 /* WeatherForecastRequest.swift */,
-				B713F92A1F140FAE00AE1749 /* APIRequest.swift */,
-				B713F92B1F140FAE00AE1749 /* ResultParser.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -312,7 +312,8 @@
 				TargetAttributes = {
 					B713F8F91F13FCCB00AE1749 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = BWKGGV23UT;
+						DevelopmentTeam = 3DVG3SM3NR;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -322,6 +323,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -360,13 +362,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WeatherApp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		29CCB9B781FD8ED3F54B9FAB /* [CP] Embed Pods Frameworks */ = {
@@ -375,9 +380,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WeatherApp/Pods-WeatherApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Reqres/Reqres.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reqres.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -549,12 +559,13 @@
 			baseConfigurationReference = 5C522D8F6D5D6256A5EA7E23 /* Pods-WeatherApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = BWKGGV23UT;
+				DEVELOPMENT_TEAM = 3DVG3SM3NR;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = VK.WeatherApp;
+				PRODUCT_BUNDLE_IDENTIFIER = VK.MyWeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -563,12 +574,13 @@
 			baseConfigurationReference = 542DB92EEF782ACBB71FE376 /* Pods-WeatherApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = BWKGGV23UT;
+				DEVELOPMENT_TEAM = 3DVG3SM3NR;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = VK.WeatherApp;
+				PRODUCT_BUNDLE_IDENTIFIER = VK.MyWeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
